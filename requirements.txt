@@ -1,0 +1,6 @@
+discord.py[voice]
+asyncio
+youtube-dl
+PyNaCl
+requests
+bs4
