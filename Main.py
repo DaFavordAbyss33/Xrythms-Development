@@ -1,26 +1,16 @@
 import discord
 from discord.ext import commands
 import asyncio
+import inspect
 import requests, bs4
 from itertools import cycle
 import os
 import time
-import inspect
 import youtube_dl
 from discord import opus
 
 client = commands.Bot(command_prefix=("x"))
 client.remove_command("help")
-status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)", "Any issues dm A.price#9746"]
-
-async def change_status():
-	await client.wait_until_ready()
-	msgs = cycle(status)
-	
-	while not client.is_closed:
-		current_status = next(msgs)
-		await client.change_presence(game=discord.Game(name=current_status))
-		await asyncio.sleep(5)
 
 players = {}	
 
@@ -116,5 +106,4 @@ async def help(ctx):
 	embed.add_field(name="xping", value="get bot's ping time")
 	await client.say(embed=embed)
 
-client.loop.create_task(change_status())
 client.run(os.environ['BOT_TOKEN'])
