@@ -10,7 +10,7 @@ from discord import opus
 
 client = commands.Bot(command_prefix=("x"))
 client.remove_command("help")
-status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)", "Any Issues Dm @A.Price#9746!"]
+status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)"]
 
 async def change_status():
 	await client.wait_until_ready()
@@ -65,12 +65,31 @@ async def on_message(message):
       player.start()
   await client.process_commands(message)
 
+def user_is_me(ctx):
+	return ctx.message.author.id == "381562121865003009"
+
 @client.command(pass_context=True, no_pm=True)
 async def ping(ctx):
     pingtime = time.time()
     pingms = await client.say("Pinging...")
     ping = (time.time() - pingtime) * 1000
     await client.edit_message(pingms, "Pong! :ping_pong: ping time is `%dms`" % ping)
+	
+@bot.command(name='eval', pass_context=True)
+@commands.check(user_is_me)
+async def _eval(ctx, *, command):
+    res = eval(command)
+    if inspect.isawaitable(res):
+        await bot.say(await res)
+    else:
+        await bot.delete_message(ctx.message)
+        await bot.say(res)
+
+@_eval.error
+async def eval_error(error, ctx):
+	if isinstance(error, discord.ext.commands.errors.CheckFailure):
+		text = "Sorry {} You can't use this command only the bot owner can do this.".format(ctx.message.author.mention)
+		await bot.send_message(ctx.message.channel, text)
     
 @client.command(pass_context=True, no_pm=True)
 async def join(ctx):
