@@ -9,7 +9,7 @@ import time
 import youtube_dl
 from discord import opus
 
-client = commands.Bot(command_prefix=("XR|"))
+client = commands.Bot(command_prefix=("x"))
 client.remove_command("help")
 status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)", "Any issues dm A.price#9746"]
 
