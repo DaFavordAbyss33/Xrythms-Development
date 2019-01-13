@@ -85,5 +85,4 @@ async def help(ctx):
 	embed.add_field(name="xping", value="get bot's ping time")
 	await client.say(embed=embed)
 
-client.loop.create_task(change_status())
 client.run(os.environ['BOT_TOKEN'])
