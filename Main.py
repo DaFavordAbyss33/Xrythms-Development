@@ -23,18 +23,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content == 'xstop':
-      serverid = message.server.id
-      players[serverid].stop()
-      await client.send_message(message.channel, "Player stopped")
-  if message.content == 'xpause':
-      serverid = message.server.id
-      players[serverid].pause()
-      await client.send_message(message.channel, "Player paused")
-  if message.content == 'xresume':
-      serverid = message.server.id
-      players[serverid].resume()
-      await client.send_message(message.channel, "Player resumed")
   if message.content.startswith('xplay '):
       author = message.author
       name = message.content.replace("xplay ", '')                 
@@ -95,6 +83,27 @@ async def leave(ctx):
     voice_client = client.voice_client_in(server)
     await voice_client.disconnect()
     await client.say("Successfully disconnected from ***[{}]***".format(channel))
+
+@client.command(pass_context=True)
+async def pause(ctx):
+    id = ctx.message.server.id
+    players[id].pause()
+    await client.say("Player Paused")
+
+@client.command(pass_context=True)
+async def stop(ctx):
+    author = ctx.message.author
+    id = ctx.message.server.id
+    players[id].stop()
+    embed = discord.Embed(description=" ")
+    embed.add_field(name="Player Stopped", value="Requested by " {ctx.message.author.name})
+    await client.say(embed=embed)
+
+@client.command(pass_context=True)
+async def resume(ctx):
+    id = ctx.message.server.id
+    players[id].resume()
+    await client.say("player resumed")
 
 @client.command(pass_context=True, no_pm=True)
 async def help(ctx):
