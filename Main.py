@@ -2,16 +2,16 @@ import discord
 from discord.ext import commands
 import asyncio
 import requests, bs4
+import inspect
 from itertools import cycle
 import os
-import inspect
 import time
 import youtube_dl
 from discord import opus
 
-client = commands.Bot(command_prefix=("x"))
+client = commands.Bot(command_prefix=("XR|"))
 client.remove_command("help")
-status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)", "Any issues dm A.price#9746"]
+status = ["Still Undergoing Development Bare With :)", "XR|help For Commands :)", "Any issues dm A.price#9746"]
 
 async def change_status():
 	await client.wait_until_ready()
@@ -33,21 +33,21 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-  if message.content == 'xstop':
+  if message.content == 'XR|stop':
       serverid = message.server.id
       players[serverid].stop()
       await client.send_message(message.channel, "Player stopped")
-  if message.content == 'xpause':
+  if message.content == 'XR|pause':
       serverid = message.server.id
       players[serverid].pause()
       await client.send_message(message.channel, "Player paused")
-  if message.content == 'xresume':
+  if message.content == 'XR|resume':
       serverid = message.server.id
       players[serverid].resume()
       await client.send_message(message.channel, "Player resumed")
-  if message.content.startswith('xplay '):
+  if message.content.startswith('XR|play '):
       author = message.author
-      name = message.content.replace("xplay ", '')                 
+      name = message.content.replace("XR|play ", '')                 
       fullcontent = ('http://www.youtube.com/results?search_query=' + name)
       text = requests.get(fullcontent).text
       soup = bs4.BeautifulSoup(text, 'html.parser')
@@ -109,11 +109,11 @@ async def leave(ctx):
 @client.command(pass_context=True, no_pm=True)
 async def help(ctx):
 	embed = discord.Embed(title="Help section", description=" ", color=0xFFFF)
-	embed.add_field(name="xjoin", value="make the bot join voice channel")
-	embed.add_field(name="xleave", value="make the bot leave the voice channel")
-	embed.add_field(name="xplay", value="please be careful when using this command it will break if theres music playing.")
-	embed.add_field(name="xstop", value="to stop the music from playing")
-	embed.add_field(name="xping", value="get bot's ping time")
+	embed.add_field(name="XR|join", value="make the bot join voice channel")
+	embed.add_field(name="XR|leave", value="make the bot leave the voice channel")
+	embed.add_field(name="XR|play", value="please be careful when using this command it will break if theres music playing.")
+	embed.add_field(name="XR|stop", value="to stop the music from playing")
+	embed.add_field(name="XR|ping", value="get bot's ping time")
 	await client.say(embed=embed)
 
 client.loop.create_task(change_status())
