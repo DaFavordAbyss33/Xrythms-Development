@@ -2,9 +2,9 @@ import discord
 from discord.ext import commands
 import asyncio
 import requests, bs4
-import inspect
 from itertools import cycle
 import os
+import inspect
 import time
 import youtube_dl
 from discord import opus
