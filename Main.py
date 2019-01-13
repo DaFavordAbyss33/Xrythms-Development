@@ -75,21 +75,21 @@ async def ping(ctx):
     ping = (time.time() - pingtime) * 1000
     await client.edit_message(pingms, "Pong! :ping_pong: ping time is `%dms`" % ping)
 	
-@bot.command(name='eval', pass_context=True)
+@client.command(name='eval', pass_context=True)
 @commands.check(user_is_me)
 async def _eval(ctx, *, command):
     res = eval(command)
     if inspect.isawaitable(res):
-        await bot.say(await res)
+        await client.say(await res)
     else:
-        await bot.delete_message(ctx.message)
-        await bot.say(res)
+        await client.delete_message(ctx.message)
+        await client.say(res)
 
 @_eval.error
 async def eval_error(error, ctx):
 	if isinstance(error, discord.ext.commands.errors.CheckFailure):
 		text = "Sorry {} You can't use this command only the bot owner can do this.".format(ctx.message.author.mention)
-		await bot.send_message(ctx.message.channel, text)
+		await client.send_message(ctx.message.channel, text)
     
 @client.command(pass_context=True, no_pm=True)
 async def join(ctx):
