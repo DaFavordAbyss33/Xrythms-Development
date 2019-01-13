@@ -10,7 +10,7 @@ from discord import opus
 
 client = commands.Bot(command_prefix=("x"))
 client.remove_command("help")
-status = ["testing the bot", "m.help"]
+status = ["Still Undergoing Development Bare With :)", "xhelp For Commands :)"]
 
 async def change_status():
 	await client.wait_until_ready()
