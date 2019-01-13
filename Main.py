@@ -96,7 +96,7 @@ async def stop(ctx):
     id = ctx.message.server.id
     players[id].stop()
     embed = discord.Embed(description=" ")
-    embed.add_field(name="Player Stopped", value="Requested by " {ctx.message.author.name})
+    embed.add_field(name="Player Stopped", value=f"Requested by {ctx.message.author.name}")
     await client.say(embed=embed)
 
 @client.command(pass_context=True)
