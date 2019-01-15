@@ -113,6 +113,7 @@ async def help(ctx):
 	embed.add_field(name="xplay", value="please be careful when using this command it will break if theres music playing.")
 	embed.add_field(name="xstop", value="to stop the music from playing")
 	embed.add_field(name="xping", value="get bot's ping time")
+	embed.add_filed(name="Comming Soon", value="New Loop Command & Queue Commands Comming Soon")
 	await client.say(embed=embed)
 
 client.run(os.environ['BOT_TOKEN'])
