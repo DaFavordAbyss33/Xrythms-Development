@@ -105,10 +105,6 @@ async def resume(ctx):
     players[id].resume()
     await client.say("player resumed")
 
-@client.command(name='cookie', pass_context=True)
-await client.say(":cookie:")
-
-
 @client.command(pass_context=True, no_pm=True)
 async def help(ctx):
 	embed = discord.Embed(title="Help section", description=" ", color=0xFFFF)
