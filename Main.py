@@ -24,6 +24,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if message.content.startswith('xplay '):
+	if song = ("playing").print("Sorry, You can't do that right now, Please wait for the song to finish")
       author = message.author
       name = message.content.replace("xplay ", '')                 
       fullcontent = ('http://www.youtube.com/results?search_query=' + name)
