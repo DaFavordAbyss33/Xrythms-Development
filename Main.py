@@ -64,7 +64,7 @@ async def leave(ctx):
 @client.command(pass_context=True)
 async def play(ctx, *, name):
 	author = ctx.message.author
-	name = message.content.replace("xplay ", '')                 
+	name = ctx.message.content.replace("xplay ", '')                 
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
 	text = requests.get(fullcontent).text
 	soup = bs4.BeautifulSoup(text, 'html.parser')
