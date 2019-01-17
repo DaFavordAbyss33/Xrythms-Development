@@ -61,7 +61,7 @@ async def leave(ctx):
     await voice_client.disconnect()
     await client.say("Successfully disconnected from ***[{}]***".format(channel))
 
-@client.commmand(pass_context=True)
+@client.command(pass_context=True)
 async def play(ctx, *, name):
 	author = message.author
 	name = message.content.replace("xplay ", '')                 
