@@ -61,10 +61,10 @@ async def leave(ctx):
     await voice_client.disconnect()
     await client.say("Successfully disconnected from ***[{}]***".format(channel))
 
-@client.command(pass_context=True)
-async def play(ctx, *, name):
+@client.command(name="play", pass_context=True)
+async def _play(ctx, *, name):
 	author = ctx.message.author
-	name = ctx.message.content.replace("xplay ", '')                 
+	name = ctx.message.content.replace("m.play ", '')
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
 	text = requests.get(fullcontent).text
 	soup = bs4.BeautifulSoup(text, 'html.parser')
@@ -74,14 +74,14 @@ async def play(ctx, *, name):
 	title = (a[0]['title'])
 	a0 = [ x for x in div[0].find_all('a') if x.has_attr('title') ][0]
 	url = ('http://www.youtube.com'+a0['href'])
-	delmsg = await client.say('Now Searching ** >> ' + now + '**')
+	delmsg = await client.say('Searching ** >> ' + name + '**')
 	server = ctx.message.server
 	voice_client = client.voice_client_in(server)
 	player = await voice_client.create_ytdl_player(url)
 	players[server.id] = player
 	print("User: {} From Server: {} is playing {}".format(author, server, title))
 	player.start()
-	await client.say('Now playing ' + title + '***')
+	await client.say('Now playing ** >> ' + title + '**')
 
 @client.command(pass_context=True)
 async def pause(ctx):
