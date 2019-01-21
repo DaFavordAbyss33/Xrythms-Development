@@ -74,7 +74,6 @@ async def play(ctx, *, name):
 	title = (a[0]['title'])
 	a0 = [ x for x in div[0].find_all('a') if x.has_attr('title') ][0]
 	url = ('http://www.youtube.com'+a0['href'])
-	delmsg = await client.say('Searching... ** >> ' + name + '**')
 	server = ctx.message.server
 	voice_client = client.voice_client_in(server)
 	player = await voice_client.create_ytdl_player(url)
