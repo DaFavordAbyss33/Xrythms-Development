@@ -61,8 +61,8 @@ async def leave(ctx):
     await voice_client.disconnect()
     await client.say("Successfully disconnected from ***[{}]***".format(channel))
 
-@client.command(pass_context=True)
-async def play(ctx, *, name):
+@client.command(name="play", pass_context=True)
+async def _play(ctx, *, name):
 	author = ctx.message.author
 	name = ctx.message.content.replace("xplay ", '')
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
