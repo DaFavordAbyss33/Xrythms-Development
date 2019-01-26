@@ -6,7 +6,7 @@ import requests, bs4
 from itertools import cycle
 import os
 import time
-import youtube_dl
+import youtube-dl
 from discord import opus
 
 client = commands.Bot(command_prefix=("x"))
