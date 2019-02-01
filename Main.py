@@ -11,7 +11,7 @@ from discord import opus
 
 start_time = time.time()
 
-client = commands.Bot(command_prefix=("m."))
+client = commands.Bot(command_prefix=("x"))
 client.remove_command("help")
 
 players = {}
