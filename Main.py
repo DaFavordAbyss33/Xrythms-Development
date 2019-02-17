@@ -60,7 +60,7 @@ async def skip(ctx):
 @bot.command(name="play", pass_context=True)
 async def _play(ctx, *, name):
 	author = ctx.message.author
-	name = ctx.message.content.replace("m.play ", '')
+	name = ctx.message.content.replace("xplay ", '')
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
 	text = requests.get(fullcontent).text
 	soup = bs4.BeautifulSoup(text, 'html.parser')
@@ -82,7 +82,7 @@ async def _play(ctx, *, name):
 
 @bot.command(pass_context=True)
 async def queue(ctx, *, name):
-	name = ctx.message.content.replace("m.queue ", '')
+	name = ctx.message.content.replace("xqueue ", '')
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
 	text = requests.get(fullcontent).text
 	soup = bs4.BeautifulSoup(text, 'html.parser')
