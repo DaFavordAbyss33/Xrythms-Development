@@ -11,6 +11,8 @@ from discord import opus
 
 start_time = time.time()
 
+bot = commands.Bot(command_prefix=("x"))
+
 @bot.event
 async def on_ready():
   print("Logged in as")
