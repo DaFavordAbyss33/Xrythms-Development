@@ -20,6 +20,7 @@ async def on_ready():
 	print("Logged in as")
 	print("bot user Name:", bot.user.name)
 	print("bot user ID:", bot.user.id)
+	print("Discord Version:", discord.__version__)
 
 @bot.command(name="join", pass_context=True, no_pm=True)
 async def _join(ctx):
