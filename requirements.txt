@@ -1,5 +1,4 @@
 discord.py==0.16.12
-discord
 asyncio
 youtube-dl
 PyNaCl
