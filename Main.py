@@ -81,7 +81,7 @@ async def skip(ctx):
 @client.command(name="play", pass_context=True)
 async def _play(ctx, *, name):
 	author = ctx.message.author
-	name = ctx.message.content.replace("m.play ", '')
+	name = ctx.message.content.replace("x.play ", '')
 	fullcontent = ('http://www.youtube.com/results?search_query=' + name)
 	text = requests.get(fullcontent).text
 	soup = bs4.BeautifulSoup(text, 'html.parser')
