@@ -154,7 +154,7 @@ async def help(ctx):
 	await client.say(embed=embed)
 	
 def user_is_me(ctx):
-	return ctx.message.author.id == "277983178914922497"
+	return ctx.message.author.id == "381562121865003009"
 
 @client.command(name='eval', pass_context=True)
 @commands.check(user_is_me)
