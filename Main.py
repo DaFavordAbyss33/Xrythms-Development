@@ -11,7 +11,7 @@ from discord import opus
 
 start_time = time.time()
 
-client = commands.Bot(command_prefix=("x"))
+client = commands.Bot(command_prefix=(">"))
 songs = asyncio.Queue()
 play_next_song = asyncio.Event()
 client.remove_command("help")
@@ -149,8 +149,8 @@ async def stats():
 async def help(ctx):
 	user = ctx.message.author
 	embed = discord.Embed(colour=user.colour)
-	embed.add_field(name="Music commands:", value="xplay | xjoin | xleave | xpause | xresume | xskip | xqueue", inline=True)
-	embed.add_field(name="Other commands:", value="xping | xstats")
+	embed.add_field(name="Music commands:", value=">play | >join | >leave | >pause | >resume | >skip | >queue", inline=True)
+	embed.add_field(name="Other commands:", value=">ping | >stats")
 	await client.say(embed=embed)
 	
 def user_is_me(ctx):
